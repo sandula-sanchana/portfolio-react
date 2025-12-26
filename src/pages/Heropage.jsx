@@ -6,9 +6,10 @@ export const Heropage=()=>{
 
 
     return (
-        <main>
+        <main className="h-[100vh]">
             <Navbar/>
             <Hero3D/>
+
         </main>
     )
 }
