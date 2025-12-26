@@ -6,7 +6,7 @@ export const Heropage=()=>{
 
 
     return (
-        <main className="h-[100vh]">
+        <main className="h-screen overflow-hidden">
             <Navbar/>
             <Hero3D/>
 
