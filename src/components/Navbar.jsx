@@ -1,15 +1,25 @@
-import Spline from '@splinetool/react-spline';
 
+
+import {Link} from 'react-router-dom'
 export const Navbar=()=>{
 
 
     return (
         <>
-            <main style={{ width: '100%', height: '100vh' }}>
-                <Spline
-                    scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode"
-                />
-            </main>
+            <div className="nav-container">
+               <div>
+
+               </div>
+
+                <div>
+                    <nav>
+                        <Link to='/'>Home</Link>
+                        <Link to='Work'>Work</Link>
+                        <Link to='Skills'>Skills</Link>
+                    </nav>
+                </div>
+            </div>
+            <div></div>
         </>
     )
 }
