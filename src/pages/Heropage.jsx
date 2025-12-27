@@ -1,17 +1,16 @@
 import {Hero3D} from "../components/Hero3D.jsx";
 import {Navbar} from "../components/Navbar.jsx";
-import FloatingBall from "../components/FloatingBall.jsx";
-import VerticalCarousel from "../components/VerticalCorousel.jsx";
+import VerticalCarousel from "../components/MarqueeComponent.jsx";
 
 
 export const Heropage=()=>{
 
 
     return (
-        <main className="h-screen overflow-hidden">
+        <main className="">
             <Navbar/>
-            <VerticalCarousel/>
             <Hero3D/>
+            <VerticalCarousel/>
 
         </main>
     )
