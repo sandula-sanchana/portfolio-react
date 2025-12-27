@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: pattaya;
+    src: url('fonts/Pattaya-Regular.ttf')
+}
+
+@theme{
+    --font-pattaya:pattaya;
+}
+
 body {
     overflow-x: hidden;
 }

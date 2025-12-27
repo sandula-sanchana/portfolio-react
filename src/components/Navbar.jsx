@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
+import logo from "../assets/logo/logo_icon.png";
 
 export const Navbar = () => {
     return (
-        <header className="w-full bg-white px-8 py-4">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <header className="w-full h-20 bg-white px-8">
+            <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
 
-                {/* Left: Image / Logo */}
-                <div className="images-div">
-                    <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
-                </div>
+                {/* Logo */}
+                <img
+                    src={logo}
+                    alt="Logo"
+                    className="h-10 w-auto bg-red-500 rounded-xl"
+                />
 
-                {/* Right: Links */}
+                {/* Links */}
                 <nav className="flex gap-6">
-                    <Link to="/" className="hover:text-blue-600 transition">Home</Link>
-                    <Link to="/work" className="hover:text-blue-600 transition">Work</Link>
-                    <Link to="/skills" className="hover:text-blue-600 transition">Skills</Link>
+                    <Link to="/" className="">Home</Link>
+                    <Link to="/work" className="">Work</Link>
+                    <Link to="/skills" className="">Skills</Link>
                 </nav>
 
             </div>
