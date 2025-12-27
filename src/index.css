@@ -5,8 +5,14 @@
     src: url('fonts/Pattaya-Regular.ttf')
 }
 
+@font-face {
+    font-family: stone;
+    src: url('fonts/Birthstone-Regular.ttf')
+}
+
 @theme{
     --font-pattaya:pattaya;
+    --font-stone:stone;
 }
 
 body {
