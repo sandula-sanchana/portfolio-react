@@ -2,6 +2,7 @@ import Spline from "@splinetool/react-spline";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
+import BinaryText from "./BinaryText.jsx";
 
 export const Hero3D = () => {
     const textRef = useRef(null);
@@ -51,15 +52,13 @@ export const Hero3D = () => {
                 </p>
 
                 <h1 className="text-[8rem] leading-[0.88] font-extrabold tracking-tight">
-                    STRATEGIC
-                    <br />
-                    SOFTWARE
-                    <br />
-                    ENGINEER
+                    <BinaryText text="STRATEGIC" /> <br />
+                    <BinaryText text="SOFTWARE" /> <br />
+                    <BinaryText text="ENGINEER" />
                 </h1>
 
                 <p className="text-sm tracking-[0.25em] uppercase opacity-60 mb-6">
-                    Software Engineer · AI/ML Engineer
+                   Software Engineer · AI/ML Engineer
                 </p>
 
                 <div className="mt-10 mb-8 ml-auto w-32 h-px bg-white/20" />

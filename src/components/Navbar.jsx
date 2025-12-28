@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo/logo_icon.png";
+import BinaryText from "./BinaryText.jsx";
 
 export const Navbar = () => {
     return (
@@ -17,15 +18,15 @@ export const Navbar = () => {
 
                 {/* Links */}
                 <nav className="ml-auto flex gap-10 text-sm tracking-widest uppercase">
-                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/">Home</Link>
-                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/work">Work</Link>
-                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/skills">Skills</Link>
+                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/"> <BinaryText text="HOME" /></Link>
+                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/work"> <BinaryText text="WORK" /></Link>
+                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/skills"> <BinaryText text="SKILLS" /></Link>
                     <Link
                         className="border border-white/40 px-4 py-2 rounded-full text-white
                                    hover:bg-white hover:text-black transition"
                         to="/contact"
                     >
-                        Contact
+                        <BinaryText text="CONTACT" />
                     </Link>
                 </nav>
             </div>
