@@ -27,53 +27,55 @@ export const Hero3D = () => {
     return (
         <section className="relative min-h-screen bg-[#0b0b0d] text-white overflow-hidden">
 
-            {/* Vertical grid lines */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-[8%] top-0 h-full w-px bg-white/10" />
-                <div className="absolute right-[8%] top-0 h-full w-px bg-white/10" />
+            {/* vertical rails */}
+            <div className="absolute left-[6%] top-0 h-full w-px bg-white/10" />
+            <div className="absolute right-[6%] top-0 h-full w-px bg-white/10" />
+
+            {/* 3D PORTRAIT — ABSOLUTE */}
+            <div
+                ref={splineRef}
+                className="absolute left-[12%] top-[16%]
+                   w-[820px] h-[740px]
+                   rounded-2xl border border-white/20 overflow-hidden inset-0"
+            >
+                <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
             </div>
 
-            <div className="max-w-7xl mx-auto h-screen grid grid-cols-2 items-center px-10">
+            {/* TEXT BLOCK — ABSOLUTE */}
+            <div
+                ref={textRef}
+                className="absolute right-[10%] top-[22%] text-right"
+            >
+                <p className="text-xs tracking-[0.35em] opacity-50 mb-6">
+                    HI, I’M SANDULA SANCHANA
+                </p>
 
-                {/* LEFT — 3D replaces profile pic */}
-                <div
-                    ref={splineRef}
-                    className="relative w-[420px] h-[520px] rounded-2xl border border-white/20 overflow-hidden"
-                >
-                    <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
+                <h1 className="text-[8rem] leading-[0.88] font-extrabold tracking-tight">
+                    STRATEGIC
+                    <br />
+                    SOFTWARE
+                    <br />
+                    ENGINEER
+                </h1>
+
+                <div className="mt-10 mb-8 ml-auto w-32 h-px bg-white/20" />
+
+                <p className="max-w-[420px] ml-auto text-lg opacity-75 leading-relaxed">
+                    Building scalable software, intelligent systems,
+                    and immersive UI experiences.
+                </p>
+
+                <div className="mt-12 flex justify-end gap-6">
+                    <button className="px-7 py-3 bg-lime-400 text-black font-semibold rounded-md">
+                        Get in touch
+                    </button>
+                    <button className="px-7 py-3 border border-white/30 rounded-md">
+                        See work
+                    </button>
                 </div>
-
-                {/* RIGHT — Text */}
-                <div ref={textRef} className="text-right">
-                    <p className="text-sm tracking-widest opacity-60 mb-4">
-                        Hi, I’m Sandula Sanchana
-                    </p>
-
-                    <h1 className="text-[6rem] leading-[0.95] font-extrabold">
-                        STRATEGIC
-                        <br />
-                        SOFTWARE
-                        <br />
-                        ENGINEER
-                    </h1>
-
-                    <p className="mt-8 max-w-md ml-auto text-lg opacity-80">
-                        Building scalable software, intelligent systems,
-                        and immersive UI experiences.
-                    </p>
-
-                    {/* CTA */}
-                    <div className="mt-10 flex justify-end gap-4">
-                        <button className="px-6 py-3 bg-lime-400 text-black font-semibold rounded-md">
-                            Get in touch
-                        </button>
-                        <button className="px-6 py-3 border border-white/30 rounded-md">
-                            See work
-                        </button>
-                    </div>
-                </div>
-
             </div>
+
         </section>
+
     );
 };
