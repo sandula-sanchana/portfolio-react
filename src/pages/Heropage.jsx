@@ -10,7 +10,7 @@ export const Heropage=()=>{
         <main className="">
             <Navbar/>
             <Hero3D/>
-            <VerticalCarousel/>
+            {/*<VerticalCarousel/>*/}
 
         </main>
     )

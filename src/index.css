@@ -10,9 +10,15 @@
     src: url('fonts/Birthstone-Regular.ttf')
 }
 
+@font-face {
+    font-family: roboto;
+    src: url('fonts/Roboto-VariableFont_wdth,wght.ttf')
+}
+
 @theme{
     --font-pattaya:pattaya;
     --font-stone:stone;
+    --font-roboto:roboto;
 }
 
 body {
