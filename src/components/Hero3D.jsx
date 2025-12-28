@@ -58,6 +58,10 @@ export const Hero3D = () => {
                     ENGINEER
                 </h1>
 
+                <p className="text-sm tracking-[0.25em] uppercase opacity-60 mb-6">
+                    Software Engineer · AI/ML Engineer
+                </p>
+
                 <div className="mt-10 mb-8 ml-auto w-32 h-px bg-white/20" />
 
                 <p className="max-w-[420px] ml-auto text-lg opacity-75 leading-relaxed">
