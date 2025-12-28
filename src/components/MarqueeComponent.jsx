@@ -13,6 +13,9 @@ function MarqueeText() {
             <span className="text-black">SOFTWARE ENGINEER</span>
             <span className="text-lime-400">✦</span>
             <span className="text-black">UI / UX DESIGNER</span>
+            <span className="text-lime-400">✦</span>
+            <span className="text-black">AI/ML ENGINEER</span>
+            <span className="text-lime-400">✦</span>
         </div>
     );
 }

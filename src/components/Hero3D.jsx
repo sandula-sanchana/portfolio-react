@@ -1,12 +1,13 @@
 import Spline from "@splinetool/react-spline";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import BinaryText from "./BinaryText.jsx";
 
 export const Hero3D = () => {
     const textRef = useRef(null);
     const splineRef = useRef(null);
+    const btnRef = useRef(null); // new ref for the button
 
     useGSAP(() => {
         gsap.from(textRef.current.children, {
@@ -25,6 +26,38 @@ export const Hero3D = () => {
         });
     });
 
+    useEffect(() => {
+        if (!btnRef.current) return;
+
+        // Continuous floating animation
+        gsap.to(btnRef.current, {
+            y: "+=5",
+            rotation: 1,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+        });
+
+        // Hover shake
+        const handleMouseEnter = () => {
+            gsap.to(btnRef.current, {
+                rotation: "+=5",
+                x: "+=3",
+                duration: 0.1,
+                yoyo: true,
+                repeat: 5,
+                ease: "power1.inOut",
+            });
+        };
+
+        btnRef.current.addEventListener("mouseenter", handleMouseEnter);
+
+        return () => {
+            btnRef.current.removeEventListener("mouseenter", handleMouseEnter);
+        };
+    }, []);
+
     return (
         <section className="relative min-h-screen bg-[#0b0b0d] text-white overflow-hidden">
 
@@ -32,7 +65,7 @@ export const Hero3D = () => {
             <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
             <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
 
-            {/* 3D PORTRAIT — ABSOLUTE */}
+            {/* 3D PORTRAIT */}
             <div
                 ref={splineRef}
                 className="absolute left-[12%] top-[16%]
@@ -42,7 +75,7 @@ export const Hero3D = () => {
                 <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
             </div>
 
-            {/* TEXT BLOCK — ABSOLUTE */}
+            {/* TEXT BLOCK */}
             <div
                 ref={textRef}
                 className="absolute right-[10%] top-[22%] text-right"
@@ -58,7 +91,7 @@ export const Hero3D = () => {
                 </h1>
 
                 <p className="text-sm tracking-[0.25em] uppercase opacity-60 mb-6">
-                   Software Engineer · AI/ML Engineer
+                    Software Engineer · AI/ML Engineer
                 </p>
 
                 <div className="mt-10 mb-8 ml-auto w-32 h-px bg-white/20" />
@@ -69,7 +102,10 @@ export const Hero3D = () => {
                 </p>
 
                 <div className="mt-12 flex justify-end gap-6">
-                    <button className="px-7 py-3 bg-lime-400 text-black font-semibold rounded-md">
+                    <button
+                        ref={btnRef} // attach the ref here
+                        className="px-7 py-3 bg-lime-400 text-black font-semibold rounded-md"
+                    >
                         Get in touch
                     </button>
                     <button className="px-7 py-3 border border-white/30 rounded-md">
@@ -77,8 +113,6 @@ export const Hero3D = () => {
                     </button>
                 </div>
             </div>
-
         </section>
-
     );
 };
