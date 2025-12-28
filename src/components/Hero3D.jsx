@@ -28,15 +28,15 @@ export const Hero3D = () => {
         <section className="relative min-h-screen bg-[#0b0b0d] text-white overflow-hidden">
 
             {/* vertical rails */}
-            <div className="absolute left-[6%] top-0 h-full w-px bg-white/10" />
-            <div className="absolute right-[6%] top-0 h-full w-px bg-white/10" />
+            <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
+            <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
 
             {/* 3D PORTRAIT — ABSOLUTE */}
             <div
                 ref={splineRef}
                 className="absolute left-[12%] top-[16%]
-                   w-[820px] h-[740px]
-                   rounded-2xl border border-white/20 overflow-hidden inset-0"
+                   w-[1620px] h-[740px]
+                   rounded-2xl border border-white/30 overflow-hidden inset-0"
             >
                 <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
             </div>
