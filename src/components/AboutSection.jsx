@@ -141,15 +141,15 @@ export const AboutSection = () => {
                 />
 
                 {/* MAIN CONTENT: TEXT LEFT / IMAGE RIGHT */}
-                <div className="flex flex-col md:flex-row items-center justify-between  mx-auto px-6 mt-16 md:mt-32 gap-10 z-10">
+                <div className="flex flex-col md:flex-row items-center justify-between mx-auto px-6 mt-16 md:mt-32 gap-10 z-10">
 
                     {/* LEFT: Paragraph */}
-                    <div ref={textRef} className="md:w-1/2 text-left">
+                    <div ref={textRef} className="md:w-1/2 text-left pl-4">
                         <h2 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight">
                             Scalable, immersive digital experiences that merge
                             <span className="block opacity-60">
-            creativity with engineering precision
-          </span>
+                              creativity with engineering precision
+                            </span>
                         </h2>
 
                         <p className="mt-6 text-lg md:text-xl opacity-70 max-w-md">
@@ -159,12 +159,12 @@ export const AboutSection = () => {
                     </div>
 
                     {/* RIGHT: Image */}
-                    <div className="md:w-1/2 flex justify-end relative">
+                    <div className="md:w-1/2 flex justify-center relative">
                         <img
                             ref={imageRef}
                             src={pic}
                             alt="Profile"
-                            className="w-[280px] md:w-[420px] lg:w-[560px] rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.85)]"
+                            className="w-[280px] md:w-[420px] lg:w-[460px] rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.85)] pr-3"
                         />
                     </div>
                 </div>
