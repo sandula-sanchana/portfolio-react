@@ -1,17 +1,16 @@
 import {Hero3D} from "../components/Hero3D.jsx";
 import {Navbar} from "../components/Navbar.jsx";
-import VerticalCarousel from "../components/MarqueeComponent.jsx";
+import {AboutSection} from "../components/AboutSection.jsx";
 
 
-export const Heropage=()=>{
+export const Home=()=>{
 
 
     return (
         <main className="">
             <Navbar/>
             <Hero3D/>
-            <VerticalCarousel/>
-
+            <AboutSection/>
         </main>
     )
 }

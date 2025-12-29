@@ -1,14 +1,14 @@
 
 import './App.css'
 import {Navbar} from "./components/Navbar.jsx";
-import {Heropage} from "./pages/Heropage.jsx";
+import {Home} from "./pages/Home.jsx";
 
 function App() {
 
 
   return (
       <>
-       <Heropage/>
+       <Home/>
     </>
   )
 }
