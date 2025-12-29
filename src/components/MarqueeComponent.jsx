@@ -34,10 +34,10 @@ export default function MarqueeComponent() {
 
 
     return (
-        <div className="overflow-hidden w-full bg-neutral-100 py-10 z-50">
+        <div className="overflow-hidden w-full bg-neutral-100 py-10 z-400">
             <div
                 ref={track}
-                className="flex w-max whitespace-nowrap gap-12 text-[8vw] font-bold tracking-tight"
+                className="flex w-max whitespace-nowrap gap-12 text-[3vw] z-400 font-bold tracking-tight"
             >
                 <MarqueeText />
                 <MarqueeText />
