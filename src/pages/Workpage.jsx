@@ -26,7 +26,7 @@ export const Workpage = () => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: textRefs.current[0],
-                    start: "top 80%",
+                    start: "top 90%", // start earlier
                 },
             });
 
@@ -113,19 +113,21 @@ export const Workpage = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="min-h-screen relative bg-gradient-to-b from-black via-gray-900 to-black text-white font-sans overflow-hidden">
+        <section ref={containerRef} className="min-h-screen relative bg-gradient-to-b from-black via-gray-900 to-#2c2c2c text-white font-sans overflow-hidden">
 
             {/* Vertical lines */}
             <div className="vertical-line absolute left-[6%] top-0 h-full w-px bg-white/30" />
             <div className="vertical-line absolute right-[6%] top-0 h-full w-px bg-white/30" />
 
-            <main className="px-12">
+            <main className="px-12 mt-6 ">
                 {/* Hero / Intro Text */}
-                <div className="max-w-3xl pt-16 pb-16">
-                    <h1 className="text-7xl font-light mb-6 opacity-0" ref={setTextRef}>My Work</h1>
-                    <p className="text-2xl text-gray-300 leading-relaxed opacity-0 max-w-2xl" ref={setTextRef}>
+                <div className="max-w-6xl pt-16 pb-16 mb-6">
+                    <h1 className="text-7xl font-light mb-6 text-white" ref={setTextRef}>My Work</h1>
+                    <p className="text-2xl text-white/90 leading-relaxed w-full" ref={setTextRef}>
                         Discover my latest projects where <span className="text-indigo-500 font-semibold">design, technology, and creativity</span> merge to craft engaging digital experiences. Each project demonstrates <span className="text-indigo-500 font-semibold">problem-solving, innovation, and attention to detail</span>. Scroll down to explore my favorites.
                     </p>
+
+
                 </div>
 
                 {/* Projects Grid */}
