@@ -5,16 +5,23 @@ const chars = ["0", "1"];
 
 export default function BinaryText({ text, className }) {
     const el = useRef(null);
-    let original = text;
+    const tweenRef = useRef(null); // store tween to kill later
+    const original = text;
 
     const scramble = () => {
+        if (!el.current) return; // guard against null
+
         let iterations = 0;
 
-        gsap.to({}, {
+        // Kill any previous tween
+        if (tweenRef.current) tweenRef.current.kill();
+
+        tweenRef.current = gsap.to({}, {
             duration: 0.8,
             repeat: 1,
-            onRepeat: () => iterations = 0,
+            onRepeat: () => (iterations = 0),
             onUpdate: () => {
+                if (!el.current) return; // safe guard
                 el.current.innerText = original
                     .split("")
                     .map((char, i) => {
@@ -22,15 +29,15 @@ export default function BinaryText({ text, className }) {
                         return chars[Math.floor(Math.random() * chars.length)];
                     })
                     .join("");
-
                 iterations += 1 / 3;
             },
         });
     };
 
     const reset = () => {
+        if (!el.current) return;
         el.current.innerText = original;
-        gsap.killTweensOf({});
+        if (tweenRef.current) tweenRef.current.kill();
     };
 
     return (

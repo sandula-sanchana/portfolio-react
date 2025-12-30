@@ -55,14 +55,14 @@ export const Navbar = () => {
                 <nav className="ml-auto flex gap-10 text-sm tracking-widest uppercase">
                     <Link className="opacity-70 hover:opacity-100 transition text-white" to="/"> <BinaryText text="HOME" /></Link>
                     <Link className="opacity-70 hover:opacity-100 transition text-white" to="/work"> <BinaryText text="WORK" /></Link>
-                    <Link className="opacity-70 hover:opacity-100 transition text-white" to="/skills"> <BinaryText text="SKILLS" /></Link>
-                    <Link
-                        className="border border-white/40 px-4 py-2 rounded-full text-white
-                                   hover:bg-white hover:text-black transition"
-                        to="/contact" ref={contactRef}
-                    >
-                        <BinaryText text="CONTACT ME 😎" />
-                    </Link>
+                    {/*<Link className="opacity-70 hover:opacity-100 transition text-white" to="/skills"> <BinaryText text="SKILLS" /></Link>*/}
+                    {/*<Link*/}
+                    {/*    className="border border-white/40 px-4 py-2 rounded-full text-white*/}
+                    {/*               hover:bg-white hover:text-black transition"*/}
+                    {/*    to="/contact" ref={contactRef}*/}
+                    {/*>*/}
+                    {/*    <BinaryText text="CONTACT ME 😎" />*/}
+                    {/*</Link>*/}
                 </nav>
             </div>
 

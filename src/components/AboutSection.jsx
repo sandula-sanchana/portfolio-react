@@ -59,19 +59,6 @@ export const AboutSection = () => {
             scrub: true,
         });
 
-        gsap.to(".marquee-wrapper", {
-            rotate: -5,
-            x: -40,
-            duration: 1.5,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
-                scrub: true,
-            },
-        });
-
         gsap.fromTo(
             ".marquee-wrapper",
             { scale: 0.92, opacity: 0 },
@@ -171,7 +158,7 @@ export const AboutSection = () => {
 
                 {/* MARQUEE BELOW */}
                 <div className="w-full mt-12 md:mt-20 px-6 overflow-hidden relative">
-                    <div className="marquee-wrapperorigin-top-left">
+                    <div className="marquee-wrapper origin-top-left">
                         <MarqueeComponent />
                     </div>
                 </div>

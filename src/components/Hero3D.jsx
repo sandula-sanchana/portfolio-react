@@ -8,45 +8,54 @@ export const Hero3D = () => {
     const textRef = useRef(null);
     const splineRef = useRef(null);
     const btnRef = useRef(null);
-
-    useGSAP(() => {
-        gsap.from(textRef.current.children, {
-            y: 60,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 1.2,
-            ease: "power4.out",
-        });
-
-        gsap.from(splineRef.current, {
-            scale: 0.9,
-            opacity: 0,
-            duration: 1.4,
-            ease: "power3.out",
-        });
-    });
-
     const dotRef = useRef(null);
 
+    // Text & Spline intro animations
     useGSAP(() => {
-        gsap.fromTo(
-            dotRef.current,
-            { y: 6, opacity: 0 },
-            {
-                y: 18,
-                opacity: 1,
+        if (textRef.current) {
+            gsap.from(textRef.current.children, {
+                y: 60,
+                opacity: 0,
+                stagger: 0.15,
                 duration: 1.2,
-                repeat: -1,
-                ease: "power1.inOut"
-            }
-        );
+                ease: "power4.out",
+            });
+        }
+
+        if (splineRef.current) {
+            gsap.from(splineRef.current, {
+                scale: 0.9,
+                opacity: 0,
+                duration: 1.4,
+                ease: "power3.out",
+            });
+        }
     });
 
+    // Dot scroll animation
+    useGSAP(() => {
+        if (dotRef.current) {
+            gsap.fromTo(
+                dotRef.current,
+                { y: 6, opacity: 0 },
+                {
+                    y: 18,
+                    opacity: 1,
+                    duration: 1.2,
+                    repeat: -1,
+                    ease: "power1.inOut",
+                }
+            );
+        }
+    });
+
+    // Button floating + hover shake
     useEffect(() => {
-        if (!btnRef.current) return;
+        const btn = btnRef.current;
+        if (!btn) return;
 
         // Continuous floating animation
-        gsap.to(btnRef.current, {
+        const floatAnim = gsap.to(btn, {
             y: "+=5",
             rotation: 1,
             duration: 2,
@@ -55,9 +64,9 @@ export const Hero3D = () => {
             ease: "sine.inOut",
         });
 
-        // Hover shake
+        // Hover shake animation
         const handleMouseEnter = () => {
-            gsap.to(btnRef.current, {
+            gsap.to(btn, {
                 rotation: "+=5",
                 x: "+=3",
                 duration: 0.1,
@@ -67,10 +76,11 @@ export const Hero3D = () => {
             });
         };
 
-        btnRef.current.addEventListener("mouseenter", handleMouseEnter);
+        btn.addEventListener("mouseenter", handleMouseEnter);
 
         return () => {
-            btnRef.current.removeEventListener("mouseenter", handleMouseEnter);
+            btn.removeEventListener("mouseenter", handleMouseEnter);
+            floatAnim.kill();
         };
     }, []);
 
