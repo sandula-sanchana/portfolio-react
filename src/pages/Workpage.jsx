@@ -17,7 +17,7 @@ export const Workpage = () => {
 
             const totalWidth =
                 cards.reduce((acc, card) => acc + card.offsetWidth, 0) +
-                (cards.length - 1) * 120;
+                (cards.length - 1) * 400;
 
             gsap.to(track, {
                 x: () => `-${totalWidth - window.innerWidth}`,
