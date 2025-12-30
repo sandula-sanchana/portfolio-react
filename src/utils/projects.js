@@ -1,13 +1,15 @@
 import { FaJava, FaHtml5, FaCss3Alt, FaJsSquare, FaDatabase, FaBootstrap } from "react-icons/fa";
 import { SiHibernate} from "react-icons/si";
 import { GiNetworkBars } from "react-icons/gi";
-import baketrack from '../assets/projects/bakeT_bg.png'
+import baketrack from '../assets/projects/bakeT_bg.png';
+import port_html  from '../assets/projects/portf2.png'
+
 
 export const projects = [
     {
         id: "BakeTrack_id",
         title: "BAKETRACK",
-        description: "b2b bakery management system using Java, JavaFX and MySQL",
+        description: "B2B bakery management system using Java, JavaFX, and MySQL",
         link: "https://github.com/sandula-sanchana/BakeTrack-Layered",
         image: baketrack,
         color: "#1e2630",
@@ -19,9 +21,9 @@ export const projects = [
     {
         id: "Portfolio_id",
         title: "PORTFOLIO",
-        description: "my personal website using HTML, CSS and JS",
+        description: "My personal website using HTML, CSS, and JS",
         link: "https://github.com/sandula-sanchana/portfolio-sandula",
-        image: "assets/images/portf2.png",
+        image: port_html,
         color: "#3e7552",
         tech: [
             { icon: FaHtml5, name: "HTML" },
@@ -45,7 +47,7 @@ export const projects = [
     {
         id: "Music_id",
         title: "ByteLink",
-        description: "Java Socket Based Chat Application",
+        description: "Java Socket-Based Chat Application",
         link: "https://github.com/sandula-sanchana/ByteLink-java-Chat-Application",
         image: "assets/images/ss2.png",
         color: "#2a4b87",
@@ -57,7 +59,7 @@ export const projects = [
     {
         id: "Game_id",
         title: "QuickByte",
-        description: "POS restaurant management system using HTML, CSS, JS and Bootstrap",
+        description: "POS restaurant management system using HTML, CSS, JS, and Bootstrap",
         link: "https://github.com/YourUsername/YourRepoName",
         image: "assets/images/QuickByte.png",
         color: "#4c442e",
