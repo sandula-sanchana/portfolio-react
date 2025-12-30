@@ -3,6 +3,7 @@ import { SiHibernate} from "react-icons/si";
 import { GiNetworkBars } from "react-icons/gi";
 import baketrack from '../assets/projects/bakeT_bg.png';
 import port_html  from '../assets/projects/portf2.png'
+import quick from '../assets/projects/QuickByte.png'
 
 
 export const projects = [
@@ -30,6 +31,19 @@ export const projects = [
             { icon: FaCss3Alt, name: "CSS" },
             { icon: FaJsSquare, name: "JavaScript" },
         ],
+    },{
+        id: "Game_id",
+        title: "QuickByte",
+        description: "POS restaurant management system using HTML, CSS, JS, and Bootstrap",
+        link: "https://github.com/YourUsername/YourRepoName",
+        image: quick,
+        color: "#4c442e",
+        tech: [
+            { icon: FaHtml5, name: "HTML" },
+            { icon: FaCss3Alt, name: "CSS" },
+            { icon: FaJsSquare, name: "JavaScript" },
+            { icon: FaBootstrap, name: "Bootstrap" },
+        ],
     },
     {
         id: "Student_id",
@@ -56,18 +70,5 @@ export const projects = [
             { icon: GiNetworkBars, name: "Sockets" },
         ],
     },
-    {
-        id: "Game_id",
-        title: "QuickByte",
-        description: "POS restaurant management system using HTML, CSS, JS, and Bootstrap",
-        link: "https://github.com/YourUsername/YourRepoName",
-        image: "assets/images/QuickByte.png",
-        color: "#4c442e",
-        tech: [
-            { icon: FaHtml5, name: "HTML" },
-            { icon: FaCss3Alt, name: "CSS" },
-            { icon: FaJsSquare, name: "JavaScript" },
-            { icon: FaBootstrap, name: "Bootstrap" },
-        ],
-    },
+
 ];

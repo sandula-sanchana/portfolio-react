@@ -34,13 +34,13 @@ const ProjectCard = ({ title, description, link, tech, image, color }) => {
             {/* Image/Mockup Area */}
             <div
                 style={{ backgroundColor: color }}
-                className="h-78 " // Fixed height for visual consistency
+                className="h-68 md:h:auto" // Fixed height for visual consistency
             >
                 {/* This is the single image element */}
                 <img
                     src={image}
                     alt={title}
-                    className="object-contain w-full  shadow-xl"
+                    className="object-contain w-full shadow-xl"
                 />
             </div>
         </a>
