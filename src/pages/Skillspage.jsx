@@ -107,31 +107,31 @@ const SkillsPage = () => {
     ];
 
     return (
-        <section className="relative min-h-screen bg-white text-black overflow-hidden mt-12 px-8 py-16">
+        <section className="relative min-h-screen bg-white text-black overflow-hidden mt-12 px-4 sm:px-8 py-12 sm:py-16">
             {/* Header */}
-            <div className="relative z-20 max-w-4xl mx-auto text-center mb-16">
-                <h1 className="text-[6rem] font-bold leading-none uppercase tracking-tight text-black">
+            <div className="relative z-20 max-w-4xl mx-auto text-center mb-12 sm:mb-16">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-tight text-black">
                     My Skills
                 </h1>
-                <p className="mt-4 text-xl text-gray-700">
+                <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700">
                     A showcase of my frontend, backend, AI/ML, and developer tools expertise.
                 </p>
             </div>
 
-            {/* Optional Floating Icons */}
-            <div className="absolute top-24 left-16 w-16 h-16 rounded-full bg-lime-400 flex items-center justify-center text-black text-2xl animate-bounce">
+            {/* Floating Icons */}
+            <div className="absolute top-12 sm:top-24 left-8 sm:left-16 w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-lime-400 flex items-center justify-center text-black text-xl sm:text-2xl animate-bounce">
                 🔥
             </div>
-            <div className="absolute top-40 right-24 w-16 h-16 rounded-full bg-red-500 flex items-center justify-center text-black text-2xl animate-bounce">
+            <div className="absolute top-20 sm:top-40 right-12 sm:right-24 w-12 sm:w-16 h-12 sm:h-16 rounded-full bg-red-500 flex items-center justify-center text-black text-xl sm:text-2xl animate-bounce">
                 ⬇️
             </div>
 
             {/* Skill Marquees */}
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-8 sm:gap-12">
                 {categories.map((cat, i) => (
                     <div key={i} className="relative w-full">
                         {/* Watermark */}
-                        <span className="absolute inset-0 flex items-center justify-center text-[6rem] font-bold text-black/30 pointer-events-none select-none z-20">
+                        <span className="absolute inset-0 flex items-center justify-center text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-black/20 pointer-events-none select-none z-20">
                             {cat.title}
                         </span>
 
@@ -149,6 +149,7 @@ const SkillsPage = () => {
         </section>
     );
 };
+
 
 
 
