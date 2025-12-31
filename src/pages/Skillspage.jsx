@@ -36,6 +36,9 @@ import ViteIcon from '../assets/icons/Vite-Dark.svg';
 import UbuntuIcon from '../assets/icons/Ubuntu-Dark.svg';
 import VercelIcon from '../assets/icons/Vercel-Dark.svg';
 
+import PyTorchIcon from '../assets/icons/PyTorch-Dark.svg';
+import ScikitLearnIcon from '../assets/icons/ScikitLearn-Dark.svg';
+
 import SkillsMarquee from "../components/skills/SkillsMarquee.jsx";
 
 const frontendSkills = [
@@ -63,14 +66,18 @@ const backendSkills = [
     { name: "Express", icon: ExpressIcon },
     { name: "NodeJs", icon: node },
     { name: "Python", icon: PythonIcon },
-    { name: "Prisma", icon: PrismaIcon } // Added Prisma
+    { name: "Prisma", icon: PrismaIcon }
 ];
 
 
 const aiSkills = [
     { name: "Python", icon: PythonIcon },
     { name: "TensorFlow", icon: TensorFlowIcon },
+    { name: "PyTorch", icon: PyTorchIcon },
     { name: "OpenCV", icon: OpenCVIcon },
+    { name: "Scikit-Learn", icon: ScikitLearnIcon },
+    // { name: "Pandas", icon: PandasIcon },
+    // { name: "NumPy", icon: NumpyIcon },
 ];
 
 const toolsSkills = [
@@ -92,20 +99,58 @@ const toolsSkills = [
 ];
 
 const SkillsPage = () => {
+    const categories = [
+        { title: "Frontend", skills: frontendSkills, speed: 10 },
+        { title: "Backend", skills: backendSkills, speed: 14, reverse: true },
+        { title: "AI / ML", skills: aiSkills, speed: 12 },
+        { title: "Tools", skills: toolsSkills, speed: 15 },
+    ];
+
     return (
-        <section className="min-h-screen flex flex-col justify-center gap-6">
-            {/* Frontend */}
-            <SkillsMarquee skills={frontendSkills} speed={10} />
+        <section className="relative min-h-screen bg-white text-black overflow-hidden mt-12 px-8 py-16">
+            {/* Header */}
+            <div className="relative z-20 max-w-4xl mx-auto text-center mb-16">
+                <h1 className="text-[6rem] font-bold leading-none uppercase tracking-tight text-black">
+                    My Skills
+                </h1>
+                <p className="mt-4 text-xl text-gray-700">
+                    A showcase of my frontend, backend, AI/ML, and developer tools expertise.
+                </p>
+            </div>
 
-            {/* Backend (reverse direction for depth) */}
-            <SkillsMarquee skills={backendSkills} speed={14} reverse />
+            {/* Optional Floating Icons */}
+            <div className="absolute top-24 left-16 w-16 h-16 rounded-full bg-lime-400 flex items-center justify-center text-black text-2xl animate-bounce">
+                🔥
+            </div>
+            <div className="absolute top-40 right-24 w-16 h-16 rounded-full bg-red-500 flex items-center justify-center text-black text-2xl animate-bounce">
+                ⬇️
+            </div>
 
-            {/* AI / ML */}
-            <SkillsMarquee skills={aiSkills} speed={12} />
+            {/* Skill Marquees */}
+            <div className="flex flex-col gap-12">
+                {categories.map((cat, i) => (
+                    <div key={i} className="relative w-full">
+                        {/* Watermark */}
+                        <span className="absolute inset-0 flex items-center justify-center text-[6rem] font-bold text-black/30 pointer-events-none select-none z-20">
+                            {cat.title}
+                        </span>
 
-            <SkillsMarquee skills={toolsSkills} speed={15} />
+                        {/* Marquee */}
+                        <div className="relative z-10">
+                            <SkillsMarquee
+                                skills={cat.skills}
+                                speed={cat.speed}
+                                reverse={cat.reverse}
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 };
+
+
+
 
 export default SkillsPage;
