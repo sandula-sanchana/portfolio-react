@@ -66,7 +66,7 @@ export const Workpage = () => {
             <div className="floating-icon absolute top-40 left-[45%] bg-red-500 w-20 h-20 rounded-full flex items-center justify-center text-black text-3xl">
                 →
             </div>
-            <div className="floating-icon absolute top-20 right-24 bg-lime-400 w-20 h-20 rounded-full flex items-center justify-center text-black text-3xl">
+            <div className="floating-icon absolute top-20 right-24 bg-lime-400 w-20 h-20 rounded-full flex items-center justify-center z-9999 text-black text-3xl">
                 ⚡
             </div>
 
