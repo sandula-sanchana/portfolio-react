@@ -68,8 +68,8 @@ export const AboutSection = () => {
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".marquee-wrapper",
-                    start: "top 80%",
-                    end: "top top",
+                    start: "top 90%",
+                    end: "bottom bottom",
                     scrub: true,
                 },
             }
@@ -157,7 +157,7 @@ export const AboutSection = () => {
                 </div>
 
                 {/* MARQUEE BELOW */}
-                <div className="w-full mt-12 md:mt-20 px-6 overflow-hidden relative">
+                <div className="w-full mt-6 md:mt-20 px-6 overflow-hidden relative">
                     <div className="marquee-wrapper origin-top-left">
                         <MarqueeComponent />
                     </div>
