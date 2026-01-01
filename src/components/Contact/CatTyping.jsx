@@ -17,7 +17,8 @@ const CatTyping = () => {
     return (
         <div
             ref={catRef}
-            className="absolute top-20 right-20 w-68 select-none"
+
+             className="hidden lg:block absolute top-1/2 right-1/2 w-68 select-none "
         >
             <img
                 src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGcwMmhmN3Z2YzRyNnF4M2I5Y3diYXE0NmllNGM2bnQweWRnYWI5ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sthmCnCpfr8M8jtTQy/giphy.gif"

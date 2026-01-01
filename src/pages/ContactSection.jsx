@@ -1,9 +1,9 @@
-import { useRef, useLayoutEffect } from "react";
+import {useRef, useLayoutEffect, useState, useEffect} from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import CatTyping from "../components/skills/CatTyping.jsx";
+import CatTyping from "../components/Contact/CatTyping.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +12,23 @@ export const ContactSection = () => {
     const titleRef = useRef(null);
     const formRef = useRef(null);
     const iconsRef = useRef([]);
+
+
+    const [showCat, setShowCat] = useState(false);
+
+    useEffect(() => {
+        // Check width initially
+        const checkWidth = () => setShowCat(window.innerWidth > 1645);
+
+        checkWidth();
+
+        // Update on resize
+        window.addEventListener("resize", checkWidth);
+
+        // Cleanup
+        return () => window.removeEventListener("resize", checkWidth);
+    }, []);
+
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -64,7 +81,7 @@ export const ContactSection = () => {
     return (
         <section
             ref={sectionRef}
-            className="min-h-screen bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center overflow-hidden"
+            className="min-h-screen relative bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center overflow-hidden"
         >
             {/* TOP TITLE */}
             <h1
@@ -75,7 +92,7 @@ export const ContactSection = () => {
             </h1>
 
             {/* CONTENT */}
-            <div className="grid md:grid-cols-2 gap-16 mt-20 items-end">
+            <div className="grid md:grid-cols-2 gap-16 mt-20 items-end relative">
 
                 {/* FORM */}
                 <form
@@ -107,11 +124,6 @@ export const ContactSection = () => {
                 </form>
 
 
-                <div className="border border-red-500 p-4">
-                    <CatTyping />
-                </div>
-
-
                 {/* RIGHT COLUMN */}
                 <div className="flex flex-col gap-10 items-start md:items-end">
 
@@ -136,6 +148,13 @@ export const ContactSection = () => {
                     </h1>
                 </div>
             </div>
+
+
+            {showCat && (
+                <div >
+                    <CatTyping />
+                </div>
+            )}
         </section>
     );
 
