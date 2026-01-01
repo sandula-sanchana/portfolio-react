@@ -53,6 +53,8 @@ export const Workpage = () => {
             ref={sectionRef}
             className="relative h-screen bg-black text-white overflow-hidden"
         >
+            <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
+            <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
             {/* Header */}
             <div className="absolute top-20 left-16 z-10">
                 <h1 className="text-[9rem] leading-none uppercase font-bold tracking-tight">

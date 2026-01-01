@@ -83,6 +83,9 @@ export const ContactSection = () => {
             ref={sectionRef}
             className="min-h-screen relative bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center overflow-hidden"
         >
+
+            <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
+            <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
             {/* TOP TITLE */}
             <h1
                 ref={titleRef}
