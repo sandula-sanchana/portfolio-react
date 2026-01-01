@@ -1,62 +1,39 @@
 import Spline from "@splinetool/react-spline";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef, useEffect } from "react";
 import BinaryText from "./BinaryText.jsx";
 
-export const Hero3D = ({ onLoaded }) => {
+export const Hero3D = () => {
     const textRef = useRef(null);
     const splineRef = useRef(null);
     const btnRef = useRef(null);
     const dotRef = useRef(null);
 
-    const animationDone = useRef(false);
-    const splineLoaded = useRef(false);
-    const called = useRef(false);
-
-    // Function to check if both Spline and text animations are finished
-    const statusCheck = () => {
-        if (animationDone.current && splineLoaded.current && !called.current) {
-            called.current = true;
-            onLoaded?.(); // now loader disappears **after animations**
-        }
-    };
-
-    useEffect(() => {
-        // Animate text
+    // Text & Spline intro animations
+    useGSAP(() => {
         if (textRef.current) {
             gsap.from(textRef.current.children, {
                 y: 60,
                 opacity: 0,
                 stagger: 0.15,
-                duration: 1.8, // slower so you can see it
+                duration: 1.2,
                 ease: "power4.out",
-                onComplete: () => {
-                    animationDone.current = true;
-                    statusCheck();
-                },
             });
-        } else {
-            animationDone.current = true;
-            statusCheck();
         }
 
-        // Animate Spline
         if (splineRef.current) {
             gsap.from(splineRef.current, {
                 scale: 0.9,
                 opacity: 0,
-                duration: 2, // slower too
+                duration: 1.4,
                 ease: "power3.out",
-                onComplete: () => {
-                    splineLoaded.current = true;
-                    statusCheck();
-                },
             });
         }
-    }, []);
+    });
 
     // Dot scroll animation
-    useEffect(() => {
+    useGSAP(() => {
         if (dotRef.current) {
             gsap.fromTo(
                 dotRef.current,
@@ -70,13 +47,14 @@ export const Hero3D = ({ onLoaded }) => {
                 }
             );
         }
-    }, []);
+    });
 
     // Button floating + hover shake
     useEffect(() => {
         const btn = btnRef.current;
         if (!btn) return;
 
+        // Continuous floating animation
         const floatAnim = gsap.to(btn, {
             y: "+=5",
             rotation: 1,
@@ -86,6 +64,7 @@ export const Hero3D = ({ onLoaded }) => {
             ease: "sine.inOut",
         });
 
+        // Hover shake animation
         const handleMouseEnter = () => {
             gsap.to(btn, {
                 rotation: "+=5",
@@ -107,6 +86,7 @@ export const Hero3D = ({ onLoaded }) => {
 
     return (
         <section className="relative min-h-screen bg-[#0b0b0d] text-white overflow-hidden">
+
             {/* vertical rails */}
             <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
             <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
@@ -115,8 +95,8 @@ export const Hero3D = ({ onLoaded }) => {
             <div
                 ref={splineRef}
                 className="absolute left-[12%] top-[16%]
-           w-[1620px] h-[740px]
-           rounded-2xl border border-white/30 overflow-hidden inset-0"
+                   w-[1620px] h-[740px]
+                   rounded-2xl border border-white/30 overflow-hidden inset-0"
             >
                 <div className="absolute left-[6%] top-0 bottom-0 h-3/4 w-px bg-white/30 z-50" />
 
@@ -126,24 +106,31 @@ export const Hero3D = ({ onLoaded }) => {
                     <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
                 </div>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white select-none">
+                <div className="
+                                absolute bottom-6 left-1/2
+                                                -translate-x-1/2
+                                    flex flex-col items-center gap-2
+                                       text-white select-none
+                                                ">
                     <div className="w-6 h-10 border border-white/70 rounded-full flex justify-center pt-2">
-                        <span ref={dotRef} className="w-1 h-2 bg-white rounded-full" />
+                        <span
+                            ref={dotRef}
+                            className="w-1 h-2 bg-white rounded-full"
+                        />
                     </div>
-                    <span className="text-[10px] tracking-widest opacity-70">SCROLL</span>
+                    <span className="text-[10px] tracking-widest opacity-70">
+                         SCROLL
+                    </span>
                 </div>
 
-                <Spline
-                    scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode"
-                    onLoad={() => {
-                        splineLoaded.current = true;
-                        statusCheck();
-                    }}
-                />
+                <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
             </div>
 
             {/* TEXT BLOCK */}
-            <div ref={textRef} className="absolute right-[10%] top-[22%] text-right">
+            <div
+                ref={textRef}
+                className="absolute right-[10%] top-[22%] text-right"
+            >
                 <p className="text-xs tracking-[0.35em] opacity-50 mb-6">
                     HI, I’M SANDULA SANCHANA
                 </p>
@@ -161,13 +148,13 @@ export const Hero3D = ({ onLoaded }) => {
                 <div className="mt-10 mb-8 ml-auto w-32 h-px bg-white/20" />
 
                 <p className="max-w-[420px] ml-auto text-lg opacity-75 leading-relaxed">
-                    Building scalable software, intelligent systems, and immersive UI
-                    experiences.
+                    Building scalable software, intelligent systems,
+                    and immersive UI experiences.
                 </p>
 
                 <div className="mt-12 flex justify-end gap-6">
                     <button
-                        ref={btnRef}
+                        ref={btnRef} // attach the ref here
                         className="px-7 py-3 bg-lime-400 text-black font-semibold rounded-md"
                     >
                         Get in touch
