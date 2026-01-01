@@ -1,18 +1,14 @@
-import {Hero3D} from "../components/Hero3D.jsx";
-import {Navbar} from "../components/Navbar.jsx";
-import {AboutSection} from "../components/AboutSection.jsx";
-import {ContactSection} from "./ContactSection.jsx";
-import Skillspage from "./Skillspage.jsx";
+import { Hero3D } from "../components/Hero3D.jsx";
+import { AboutSection } from "../components/AboutSection.jsx";
+import { ContactSection } from "./ContactSection.jsx";
 
-
-export const Home=()=>{
-
-
+export const Home = ({ onLoaded }) => {
     return (
-        <main className="">
-            <Hero3D/>
-            <AboutSection/>
-            <ContactSection/>
+        <main>
+            {/* Pass onLoaded directly to Hero3D */}
+            <Hero3D onLoaded={onLoaded} />
+            <AboutSection />
+            <ContactSection />
         </main>
-    )
-}
+    );
+};
