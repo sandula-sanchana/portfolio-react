@@ -123,6 +123,8 @@ export const Hero3D = () => {
                     </span>
                 </div>
 
+
+
                 <Spline scene="https://prod.spline.design/LtW1ZRVgxJNmnIh9/scene.splinecode" />
             </div>
 
