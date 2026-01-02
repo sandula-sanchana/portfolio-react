@@ -102,8 +102,6 @@ export const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            // Mobile Menu
             <div
                 ref={mobileMenuRef}
                 className="fixed top-[30px] right-[-400px] h-auto w-3/4 max-w-xs bg-black/90 backdrop-blur-lg flex flex-col gap-6 p-6 rounded-lg md:hidden z-40"
