@@ -47,19 +47,25 @@ export const Navbar = () => {
         if (!mobileMenuRef.current) return;
 
         if (menuOpen) {
+            // Slide in from off-screen right
             gsap.to(mobileMenuRef.current, {
-                x: 0,
+                right: 30, // final position
+                opacity: 1,
                 duration: 0.3,
                 ease: "power2.out",
             });
         } else {
+            // Slide out to the right
             gsap.to(mobileMenuRef.current, {
-                x: "100%",
+                right: -400, // fully off-screen
+                opacity: 0,
                 duration: 0.3,
                 ease: "power2.in",
             });
         }
     }, [menuOpen]);
+
+
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-black/20">
@@ -97,9 +103,10 @@ export const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
+            // Mobile Menu
             <div
                 ref={mobileMenuRef}
-                className="fixed top-0 right-0 h-full w-3/4 bg-black/90 backdrop-blur-lg flex flex-col gap-10 p-8 transform translate-x-full md:hidden z-40"
+                className="fixed top-[30px] right-[-400px] h-auto w-3/4 max-w-xs bg-black/90 backdrop-blur-lg flex flex-col gap-6 p-6 rounded-lg md:hidden z-40"
             >
                 <Link className="text-white text-lg" to="/" onClick={() => setMenuOpen(false)}>
                     <BinaryText text="HOME" />
@@ -118,6 +125,7 @@ export const Navbar = () => {
                     <BinaryText text="CONTACT ME 😎" />
                 </Link>
             </div>
+
 
             <div className="h-px bg-white/30 w-full" />
         </header>
