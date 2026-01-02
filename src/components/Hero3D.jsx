@@ -120,7 +120,7 @@ export const Hero3D = () => {
             {/* TEXT BLOCK */}
             <div
                 ref={textRef}
-                className="absolute right-[10%] top-[33%] text-right "
+                className="absolute right-[10%] top-[22%] text-right "
             >
                 <p className="text-xs tracking-[0.35em] opacity-50 mb-4 max-md:text-[10px]">
                     HI, I’M SANDULA SANCHANA
@@ -140,7 +140,7 @@ export const Hero3D = () => {
 
                 <div className="w-32 h-px bg-white/20 mb-6 max-md:w-24" />
 
-                <p className="max-w-[420px] text-lg opacity-75 leading-relaxed mb-6 max-md:text-base max-md:max-w-full">
+                <p className="max-w-[420px] ml-auto text-lg opacity-75 leading-relaxed">
                     Building scalable software, intelligent systems,
                     and immersive UI experiences.
                 </p>
