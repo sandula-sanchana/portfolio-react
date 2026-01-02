@@ -50,6 +50,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     const location = useLocation();
 
+    console.log(location.pathname);
     return (
         <>
 
