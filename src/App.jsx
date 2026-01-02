@@ -5,6 +5,7 @@ import { Home } from "./pages/Home.jsx";
 import { Workpage } from "./pages/Workpage.jsx";
 import SkillsPage from "./pages/Skillspage.jsx";
 import { ContactSection } from "./pages/ContactSection.jsx";
+import {Navbar} from "./components/Navbar.jsx";
 
 function Loader({ onComplete }) {
     const [count, setCount] = useState(0);
@@ -43,6 +44,7 @@ function App() {
 
             {!loading && (
                 <>
+                    <Navbar/>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/work" element={<Workpage />} />
