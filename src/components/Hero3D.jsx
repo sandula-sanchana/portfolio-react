@@ -98,9 +98,9 @@ export const Hero3D = () => {
       absolute inset-0
       w-full h-full
       opacity-100
-      max-md:opacity-100
-      md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[400px] md:h-[300px]
-      lg:left-[12%] lg:top-[15%] lg:translate-x-0 lg:translate-y-0 lg:w-[1620px] lg:h-[740px]
+      min-md:hidden
+      md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[4000px] md:h-[3000px]
+      lg:left-[12%] lg:top-[15%] lg:translate-x-0 lg:translate-y-0 lg:w-[1620px] lg:h-[740px] min-lg:block
       rounded-2xl border border-white/30 overflow-hidden
       pointer-events-none
       "
