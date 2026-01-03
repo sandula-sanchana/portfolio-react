@@ -253,7 +253,7 @@ export const AboutSection = () => {
                    rounded-2xl
                    shadow-[0_40px_120px_rgba(0,0,0,0.85)]
                    pr-3
-                   relative z-10 mt-6"
+                   relative z-10 mt-8 mb-2"
                         />
                     </div>
 

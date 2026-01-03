@@ -51,13 +51,23 @@ export const Workpage = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative h-screen bg-black text-white overflow-hidden"
+            className="
+    relative h-screen bg-black text-white overflow-hidden
+    max-md:h-auto max-md:py-24
+  "
         >
-            <div className="absolute left-[6%] top-0 h-full w-px bg-white/30" />
-            <div className="absolute right-[6%] top-0 h-full w-px bg-white/30" />
+            {/* Side vertical lines (hidden on mobile) */}
+            <div className="absolute left-[6%] top-0 h-full w-px bg-white/30 max-md:hidden" />
+            <div className="absolute right-[6%] top-0 h-full w-px bg-white/30 max-md:hidden" />
+
             {/* Header */}
-            <div className="absolute top-20 left-16 z-10">
-                <h1 className="text-[9rem] leading-none uppercase font-bold tracking-tight">
+            <div className="absolute top-20 left-16 z-10 max-md:static max-md:px-6 max-md:mb-12">
+                <h1
+                    className="
+        font-bold uppercase tracking-tight leading-none
+        text-[clamp(3rem,8vw,9rem)]
+      "
+                >
                     My Recent
                     <br />
                     Works
@@ -65,22 +75,53 @@ export const Workpage = () => {
             </div>
 
             {/* Floating Icons */}
-            <div className="floating-icon absolute top-40 left-[45%] bg-red-500 w-20 h-20 rounded-full flex items-center justify-center text-black text-3xl">
+            {/* Arrow */}
+            <div
+                className="
+      floating-icon absolute top-40 left-[45%]
+      bg-red-500 text-black rounded-full flex items-center justify-center
+      w-20 h-20 text-[clamp(1.5rem,2vw,3rem)]
+      lg:w-20 lg:h-20
+      md:w-16 md:h-16
+      max-md:hidden
+    "
+            >
                 →
             </div>
-            <div className="floating-icon absolute top-20 right-24 bg-lime-400 w-20 h-20 rounded-full flex items-center justify-center z-9999 text-black text-3xl">
+
+            {/* Lightning */}
+            <div
+                className="
+      floating-icon absolute top-20 right-24
+      bg-lime-400 text-black rounded-full flex items-center justify-center
+      w-20 h-20 text-[clamp(1.5rem,2vw,3rem)]
+      lg:w-20 lg:h-20
+      md:w-16 md:h-16
+      max-md:hidden
+    "
+            >
                 ⚡
             </div>
 
-            {/* Horizontal Track */}
+            {/* Horizontal Track / Projects */}
             <div
                 ref={trackRef}
-                className="absolute bottom-20 left-0 flex gap-[120px] px-[50vw]"
+                className="
+      absolute bottom-20 left-0 flex
+      gap-[clamp(2rem,5vw,7rem)]
+      px-[clamp(20vw,50%,50vw)]
+
+      lg:gap-[120px] lg:px-[50vw]
+      md:gap-24 md:px-[30vw]
+
+      max-md:static max-md:flex-col max-md:gap-10 max-md:px-6 max-md:pb-16
+    "
             >
                 {projects.map((project) => (
                     <WorkCard key={project.id} project={project} />
                 ))}
             </div>
         </section>
+
     );
 };
