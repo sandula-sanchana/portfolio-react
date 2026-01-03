@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @font-face {
     font-family: pattaya;
@@ -39,4 +40,24 @@ body {
     .text-shadow {
         text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
+}
+
+
+
+/* Hide scrollbar but keep scrolling */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* Old Edge / IE */
+body {
+    -ms-overflow-style: none;
 }

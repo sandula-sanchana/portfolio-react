@@ -4,6 +4,7 @@ import { GiNetworkBars } from "react-icons/gi";
 import baketrack from '../assets/projects/bakeT_bg.png';
 import port_html  from '../assets/projects/portf2.png'
 import quick from '../assets/projects/QuickByte.png'
+import socket from '../assets/projects/ss2.png'
 
 
 export const projects = [
@@ -63,7 +64,7 @@ export const projects = [
         title: "ByteLink",
         description: "Java Socket-Based Chat Application",
         link: "https://github.com/sandula-sanchana/ByteLink-java-Chat-Application",
-        image: "assets/images/ss2.png",
+        image: socket,
         color: "#2a4b87",
         tech: [
             { icon: FaJava, name: "Java" },
