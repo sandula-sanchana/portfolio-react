@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom"; // ✅ Imported useLocation
 import { Home } from "./pages/Home.jsx";
-import { Workpage } from "./pages/Workpage.jsx";
 import SkillsPage from "./pages/Skillspage.jsx";
 import { ContactSection } from "./pages/ContactSection.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import RouteLoader from "./components/RouteLoader.jsx";
+import ProjectSection from "./pages/ProjectSection.jsx";
 
 
 function Loader({ onComplete }) {
@@ -66,7 +66,7 @@ function App() {
                     <RouteLoader key={location.pathname} pathName={path(location.pathname)}>
                         <Routes>
                             <Route path="/" element={<Home />} />
-                            <Route path="/work" element={<Workpage />} />
+                            <Route path="/work" element={<ProjectSection/>} />
                             <Route path="/skills" element={<SkillsPage />} />
                             <Route path="/contact" element={<ContactSection />} />
                         </Routes>
