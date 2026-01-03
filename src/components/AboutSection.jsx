@@ -201,6 +201,7 @@ export const AboutSection = () => {
             rounded-xl
             px-4 py-3
             shadow-lg
+            max-lg:hidden
         "
                         >
                             <div className="text-3xl font-bold leading-none">21</div>
@@ -224,6 +225,7 @@ export const AboutSection = () => {
             shadow-lg
             cursor-pointer
             hover:scale-105 transition-transform
+            max-lg:hidden
         "
                         >
                             {/* Spotify Icon */}
@@ -251,7 +253,7 @@ export const AboutSection = () => {
                    rounded-2xl
                    shadow-[0_40px_120px_rgba(0,0,0,0.85)]
                    pr-3
-                   relative z-10"
+                   relative z-10 mt-6"
                         />
                     </div>
 
