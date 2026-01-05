@@ -1,11 +1,11 @@
-import { FaJava, FaHtml5, FaCss3Alt, FaJsSquare, FaDatabase, FaBootstrap } from "react-icons/fa";
-import { SiHibernate} from "react-icons/si";
+import { FaJava, FaHtml5, FaCss3Alt, FaJsSquare, FaDatabase, FaBootstrap, FaReact } from "react-icons/fa";
+import { SiHibernate } from "react-icons/si";
 import { GiNetworkBars } from "react-icons/gi";
 import baketrack from '../assets/projects/bakeT_bg.png';
-import port_html  from '../assets/projects/portf2.png'
-import quick from '../assets/projects/QuickByte.png'
-import socket from '../assets/projects/ss2.png'
-
+import port_html from '../assets/projects/portf2.png';
+import quick from '../assets/projects/QuickByte.png';
+import socket from '../assets/projects/ss2.png';
+import port_react from '../assets/projects/pr.png'; // <-- Add your React portfolio image here
 
 export const projects = [
     {
@@ -21,6 +21,20 @@ export const projects = [
         ],
     },
     {
+        id: "PortfolioReact_id",
+        title: "PORTFOLIO REACT",
+        description: "My personal portfolio using React, Tailwind, GSAP & Spline",
+        link: "https://github.com/sandula-sanchana/portfolio-react",
+        image: port_react,
+        color: "#2563eb",
+        tech: [
+            { icon: FaReact, name: "React" },
+            { icon: FaCss3Alt, name: "Tailwind" },
+            { icon: FaJsSquare, name: "GSAP" },
+            { icon: FaHtml5, name: "Spline" },
+        ],
+    },
+    {
         id: "Portfolio_id",
         title: "PORTFOLIO",
         description: "My personal website using HTML, CSS, and JS",
@@ -32,7 +46,8 @@ export const projects = [
             { icon: FaCss3Alt, name: "CSS" },
             { icon: FaJsSquare, name: "JavaScript" },
         ],
-    },{
+    },
+    {
         id: "Game_id",
         title: "QuickByte",
         description: "POS restaurant management system using HTML, CSS, JS, and Bootstrap",
@@ -46,19 +61,19 @@ export const projects = [
             { icon: FaBootstrap, name: "Bootstrap" },
         ],
     },
-    {
-        id: "Student_id",
-        title: "Ignition Edu",
-        description: "Driving School System using Hibernate ORM",
-        link: "https://github.com/sandula-sanchana/ORM-CourseWork-Sandula-73",
-        image: "https://placehold.co/1200x800/8c5a4d/ffffff?text=Student+Management",
-        color: "#8c5a4d",
-        tech: [
-            { icon: FaJava, name: "Java" },
-            { icon: FaCss3Alt, name: "CSS" },
-            { icon: SiHibernate, name: "Hibernate" },
-        ],
-    },
+    // {
+    //     id: "Student_id",
+    //     title: "Ignition Edu",
+    //     description: "Driving School System using Hibernate ORM",
+    //     link: "https://github.com/sandula-sanchana/ORM-CourseWork-Sandula-73",
+    //     image: "https://placehold.co/1200x800/8c5a4d/ffffff?text=Student+Management",
+    //     color: "#8c5a4d",
+    //     tech: [
+    //         { icon: FaJava, name: "Java" },
+    //         { icon: FaCss3Alt, name: "CSS" },
+    //         { icon: SiHibernate, name: "Hibernate" },
+    //     ],
+    // },
     {
         id: "Music_id",
         title: "ByteLink",
@@ -70,6 +85,5 @@ export const projects = [
             { icon: FaJava, name: "Java" },
             { icon: GiNetworkBars, name: "Sockets" },
         ],
-    },
-
+    }
 ];
