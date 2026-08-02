@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#2e1259"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <circle cx="1050" cy="120" r="220" fill="#ffffff0d"/>
+  <circle cx="120" cy="700" r="260" fill="#ffffff0a"/>
+  <g stroke="#ffffff14" stroke-width="1.5">
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+  </g>
+  <text x="60" y="420" font-family="Arial, sans-serif" font-weight="800" font-size="72" fill="#ffffff">Neural Network</text>
+  <text x="60" y="220" font-family="Arial, sans-serif" font-size="28" fill="#ffffffaa" letter-spacing="2">PYTORCH</text>
+</svg>

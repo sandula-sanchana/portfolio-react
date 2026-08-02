@@ -1,5 +1,5 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import { projects } from '../utils/projects.js';
+import React, { useRef, useLayoutEffect, useState, useMemo } from 'react';
+import { projects, CATEGORY } from '../utils/projects.js';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,9 +8,23 @@ import AbstractBackground from '../utils/AbstractBackground.jsx'; // <-- IMPORT 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+const FILTERS = ["All", CATEGORY.SE, CATEGORY.ML];
+
+// Distinct badge styling per category so SE vs ML projects are identifiable at a glance
+const badgeStyles = {
+    [CATEGORY.SE]: "bg-sky-400/20 text-sky-300 border-sky-400/40",
+    [CATEGORY.ML]: "bg-violet-400/20 text-violet-300 border-violet-400/40",
+};
+
 const ProjectsSection = () => {
     // Ref for the main container to scope the animation
     const projectsRef = useRef(null);
+    const [activeFilter, setActiveFilter] = useState("All");
+
+    const visibleProjects = useMemo(
+        () => (activeFilter === "All" ? projects : projects.filter((p) => p.category === activeFilter)),
+        [activeFilter]
+    );
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -33,10 +47,12 @@ const ProjectsSection = () => {
                     },
                 });
             });
+
+            ScrollTrigger.refresh();
         }, projectsRef);
 
         return () => ctx.revert();
-    }, []);
+    }, [activeFilter]);
 
     return (
         // 1. Change section to 'relative' and set a base background color
@@ -51,12 +67,29 @@ const ProjectsSection = () => {
 
             {/* Main Content */}
             <div className="container mx-auto px-4 mt-5 md:px-8 lg:px-12 relative z-10">
-                <h2 className="text-6xl md:text-8xl font-black text-white mb-16 uppercase tracking-tight drop-shadow-lg">
+                <h2 className="text-6xl md:text-8xl font-black text-white mb-8 uppercase tracking-tight drop-shadow-lg">
                     Projects
                 </h2>
 
+                {/* Category filter */}
+                <div className="flex flex-wrap gap-3 mb-16">
+                    {FILTERS.map((filter) => (
+                        <button
+                            key={filter}
+                            onClick={() => setActiveFilter(filter)}
+                            className={`px-5 py-2 rounded-full border text-sm font-semibold uppercase tracking-wide transition-colors duration-300 ${
+                                activeFilter === filter
+                                    ? "bg-white text-black border-white"
+                                    : "bg-white/5 text-white/70 border-white/20 hover:border-white/50 hover:text-white"
+                            }`}
+                        >
+                            {filter}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="grid grid-cols-1 gap-12 lg:gap-16">
-                    {projects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <div
                             key={project.id}
                             className="project-item overflow-hidden shadow-2xl rounded-3xl group backdrop-blur-sm bg-white/10 border border-white/5 hover:shadow-3xl transition-shadow duration-500"
@@ -87,6 +120,11 @@ const ProjectsSection = () => {
                                         index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'
                                     }`}
                                 >
+                                    <span
+                                        className={`inline-block w-fit mb-3 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border ${badgeStyles[project.category]}`}
+                                    >
+                                        {project.category}
+                                    </span>
                                     <h3 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight drop-shadow-md">
                                         {project.title}
                                     </h3>

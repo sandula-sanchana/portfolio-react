@@ -8,7 +8,7 @@ export const CONTACT_CONFIG = {
 
     // WhatsApp number in international format, digits only, no + or spaces
     // e.g. "94771234567" for a Sri Lankan number starting with 0771234567
-    whatsappNumber: "+94765371402",
+    whatsappNumber: "94765371402",
 
     // The email you want contact-form messages sent to
     email: "sandulasanchanafernando@gmail.com",
