@@ -1,0 +1,392 @@
+diff --git a/src/components/Hero3D.jsx b/src/components/Hero3D.jsx
+index 0b7f46a..ce8258d 100644
+--- a/src/components/Hero3D.jsx
++++ b/src/components/Hero3D.jsx
+@@ -2,7 +2,9 @@ import Spline from "@splinetool/react-spline";
+ import gsap from "gsap";
+ import { useGSAP } from "@gsap/react";
+ import { useRef, useEffect } from "react";
++import { Link } from "react-router-dom";
+ import BinaryText from "./BinaryText.jsx";
++import { CONTACT_CONFIG, mailtoLink, whatsappLink } from "../utils/contactConfig.js";
+ 
+ export const Hero3D = () => {
+     const textRef = useRef(null);
+@@ -107,10 +109,16 @@ export const Hero3D = () => {
+             >
+                 <div className="absolute left-[6%] top-0 bottom-0 h-3/4 w-px bg-white/30 z-50 " />
+ 
+-                <div className='z-50 absolute left-[5.5%] bottom-[5%] flex flex-col gap-6'>
+-                    <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+-                    <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+-                    <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
++                <div className='z-50 absolute left-[5.5%] bottom-[5%] flex flex-col gap-6 pointer-events-auto'>
++                    <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
++                        <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
++                    </a>
++                    <a href={CONTACT_CONFIG.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
++                        <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
++                    </a>
++                    <a href={mailtoLink("Let's work together")} aria-label="Email">
++                        <svg role="img" className="hover:-translate-y-1 transition-transform duration-300 cursor-pointer" viewBox="0 0 24 24" width='20' fill='white' xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
++                    </a>
+                 </div>
+ 
+ 
+@@ -146,15 +154,16 @@ export const Hero3D = () => {
+                 </p>
+ 
+                 <div className="mt-12 flex justify-end gap-6">
+-                    <button
++                    <Link
++                        to="/contact"
+                         ref={btnRef} // attach the ref here
+                         className="px-7 py-3 bg-lime-400 text-black font-semibold rounded-md"
+                     >
+                         Get in touch
+-                    </button>
+-                    <button className="px-7 py-3 border border-white/30 rounded-md">
++                    </Link>
++                    <Link to="/work" className="px-7 py-3 border border-white/30 rounded-md">
+                         See work
+-                    </button>
++                    </Link>
+                 </div>
+             </div>
+ 
+diff --git a/src/components/skills/SkillsMarquee.jsx b/src/components/skills/SkillsMarquee.jsx
+index fb4cc19..9fbb665 100644
+--- a/src/components/skills/SkillsMarquee.jsx
++++ b/src/components/skills/SkillsMarquee.jsx
+@@ -1,79 +1,35 @@
+-import gsap from "gsap";
+-import { useGSAP } from "@gsap/react";
+-import { memo, useRef } from "react";
++import { memo } from "react";
+ 
+ // Memoized row for performance
+ const SkillsRow = memo(({ skills }) => (
+-    <div className="flex items-center gap-14">
++    <div className="flex items-center gap-14 shrink-0">
+         {skills.map((skill, i) => (
+-            <div key={i} className="flex items-center gap-3">
+-                <img src={skill.icon} alt={skill.name} className="w-10 h-10" draggable={false} />
+-                <span className="font-bold uppercase text-black">{skill.name}</span>
+-                <span className="text-lime-400 text-2xl">✦</span>
++            <div key={i} className="flex items-center gap-3 shrink-0">
++                <img src={skill.icon} alt={skill.name} className="w-10 h-10 shrink-0" draggable={false} />
++                <span className="font-bold uppercase text-black whitespace-nowrap">{skill.name}</span>
++                <span className="text-lime-400 text-2xl shrink-0">✦</span>
+             </div>
+         ))}
+     </div>
+ ));
+ 
+-export default function SkillsMarquee({ skills, speed = 12, reverse = false }) {
+-    const track = useRef(null);
+-    const cloneRef = useRef(null); // store clone for cleanup
+-
+-    useGSAP(() => {
+-        const trackEl = track.current;
+-        if (!trackEl) return;
+-
+-        const originalContent = trackEl.firstChild;
+-        if (!originalContent) return;
+-
+-        // Clone the content once and store reference
+-        const clone = originalContent.cloneNode(true);
+-        cloneRef.current = clone;
+-        trackEl.appendChild(clone);
+-
+-        // Wait for all images to load
+-        const images = trackEl.querySelectorAll("img");
+-        Promise.all(
+-            [...images].map(
+-                img =>
+-                    img.complete
+-                        ? Promise.resolve()
+-                        : new Promise(res => {
+-                            img.onload = res;
+-                            img.onerror = res;
+-                        })
+-            )
+-        ).then(() => {
+-            const contentWidth = originalContent.offsetWidth;
+-            const startX = reverse ? -contentWidth : 0;
+-            const endX = reverse ? 0 : -contentWidth;
+-
+-            gsap.set(trackEl, { x: startX });
+-            gsap.to(trackEl, {
+-                x: endX,
+-                repeat: -1,
+-                duration: speed,
+-                ease: "linear",
+-            });
+-        });
+-
+-        // Cleanup
+-        return () => {
+-            gsap.killTweensOf(trackEl);
+-            if (cloneRef.current && trackEl.contains(cloneRef.current)) {
+-                trackEl.removeChild(cloneRef.current);
+-            }
+-        };
+-    }, []); // run only once
+-
++export default function SkillsMarquee({ skills, speed = 12, reverse = false, bg = "bg-neutral-100" }) {
+     return (
+-        <div className="overflow-hidden w-full py-8 bg-neutral-100">
++        <div className={`overflow-hidden w-full py-8 ${bg}`}>
++            {/*
++              Two copies of the row sit side by side inside a track sized to its
++              own content (w-max). Animating the track by exactly -50% of its
++              width loops the two copies seamlessly, no JS width measurement
++              or DOM cloning needed.
++            */}
+             <div
+-                ref={track}
+-                className="flex whitespace-nowrap gap-14 text-[2.8vw]"
+-                style={{ willChange: "transform" }} // smoother animation
++                className="flex w-max gap-14 text-[2.8vw]"
++                style={{
++                    animation: `${reverse ? "marquee-reverse" : "marquee-forward"} ${speed}s linear infinite`,
++                }}
+             >
+                 <SkillsRow skills={skills} />
++                <SkillsRow skills={skills} />
+             </div>
+         </div>
+     );
+diff --git a/src/index.css b/src/index.css
+index a9489a6..a8b4889 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -61,3 +61,14 @@ html {
+ body {
+     -ms-overflow-style: none;
+ }
++
++/* Skills marquee scroll */
++@keyframes marquee-forward {
++    from { transform: translateX(0); }
++    to { transform: translateX(-50%); }
++}
++
++@keyframes marquee-reverse {
++    from { transform: translateX(-50%); }
++    to { transform: translateX(0); }
++}
+diff --git a/src/pages/ContactSection.jsx b/src/pages/ContactSection.jsx
+index 6777df3..9e612e3 100644
+--- a/src/pages/ContactSection.jsx
++++ b/src/pages/ContactSection.jsx
+@@ -4,15 +4,68 @@ import ScrollTrigger from "gsap/ScrollTrigger";
+ import SplitType from "split-type";
+ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+ import CatTyping from "../components/Contact/CatTyping.jsx";
++import { CONTACT_CONFIG, whatsappLink } from "../utils/contactConfig.js";
+ 
+ gsap.registerPlugin(ScrollTrigger);
+ 
++const socialLinks = [
++    { Icon: FaGithub, href: CONTACT_CONFIG.githubUrl, label: "GitHub" },
++    { Icon: FaLinkedin, href: CONTACT_CONFIG.linkedinUrl, label: "LinkedIn" },
++    { Icon: FaWhatsapp, href: whatsappLink(), label: "WhatsApp" },
++];
++
+ export const ContactSection = () => {
+     const sectionRef = useRef(null);
+     const titleRef = useRef(null);
+     const formRef = useRef(null);
+     const iconsRef = useRef([]);
+ 
++    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
++    // status: idle | sending | success | error
++    const [status, setStatus] = useState("idle");
++    const [errorMsg, setErrorMsg] = useState("");
++
++    const handleChange = (e) => {
++        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
++    };
++
++    const handleSubmit = async (e) => {
++        e.preventDefault();
++
++        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
++            setStatus("error");
++            setErrorMsg("Please fill in every field.");
++            return;
++        }
++
++        setStatus("sending");
++        setErrorMsg("");
++
++        try {
++            const res = await fetch("https://api.web3forms.com/submit", {
++                method: "POST",
++                headers: { "Content-Type": "application/json" },
++                body: JSON.stringify({
++                    access_key: CONTACT_CONFIG.web3formsAccessKey,
++                    subject: `New message from ${formData.name} (portfolio site)`,
++                    from_name: formData.name,
++                    ...formData,
++                }),
++            });
++
++            const data = await res.json();
++
++            if (data.success) {
++                setStatus("success");
++                setFormData({ name: "", email: "", message: "" });
++            } else {
++                throw new Error(data.message || "Something went wrong.");
++            }
++        } catch (err) {
++            setStatus("error");
++            setErrorMsg(err.message || "Couldn't send that — please try again.");
++        }
++    };
+ 
+     const [showCat, setShowCat] = useState(false);
+ 
+@@ -100,30 +153,51 @@ export const ContactSection = () => {
+                 {/* FORM */}
+                 <form
+                     ref={formRef}
++                    onSubmit={handleSubmit}
+                     className="flex flex-col gap-6 max-w-md w-full"
+                 >
+                     <input
+                         type="text"
++                        name="name"
+                         placeholder="Your Name"
++                        value={formData.name}
++                        onChange={handleChange}
++                        disabled={status === "sending"}
+                         className="bg-transparent border-b border-white/30 py-3 outline-none focus:border-white"
+                     />
+                     <input
+                         type="email"
++                        name="email"
+                         placeholder="Your Email"
++                        value={formData.email}
++                        onChange={handleChange}
++                        disabled={status === "sending"}
+                         className="bg-transparent border-b border-white/30 py-3 outline-none focus:border-white"
+                     />
+                     <textarea
++                        name="message"
+                         placeholder="Your Message"
+                         rows="4"
++                        value={formData.message}
++                        onChange={handleChange}
++                        disabled={status === "sending"}
+                         className="bg-transparent border-b border-white/30 py-3 outline-none focus:border-white resize-none"
+                     />
+ 
+                     <button
+                         type="submit"
+-                        className="mt-8 px-8 py-3 border border-white rounded-full w-fit hover:bg-white hover:text-black transition-all"
++                        disabled={status === "sending"}
++                        className="mt-8 px-8 py-3 border border-white rounded-full w-fit hover:bg-white hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                     >
+-                        Send Message →
++                        {status === "sending" ? "Sending…" : "Send Message →"}
+                     </button>
++
++                    {status === "success" && (
++                        <p className="text-lime-400 text-sm">Thanks — your message is in! I'll get back to you soon.</p>
++                    )}
++                    {status === "error" && (
++                        <p className="text-red-400 text-sm">{errorMsg}</p>
++                    )}
+                 </form>
+ 
+ 
+@@ -132,14 +206,17 @@ export const ContactSection = () => {
+ 
+                     {/* SOCIALS */}
+                     <div className="flex gap-8">
+-                        {[FaGithub, FaLinkedin, FaWhatsapp].map((Icon, i) => (
++                        {socialLinks.map((social, i) => (
+                             <a
+-                                key={i}
++                                key={social.label}
+                                 ref={(el) => (iconsRef.current[i] = el)}
+-                                href="#"
++                                href={social.href}
++                                target="_blank"
++                                rel="noopener noreferrer"
++                                aria-label={social.label}
+                                 className="text-5xl relative group"
+                             >
+-                                <Icon />
++                                <social.Icon />
+                                 <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-white transition-all group-hover:w-full" />
+                             </a>
+                         ))}
+diff --git a/src/pages/Skillspage.jsx b/src/pages/Skillspage.jsx
+index 6511d9a..df6b9f2 100644
+--- a/src/pages/Skillspage.jsx
++++ b/src/pages/Skillspage.jsx
+@@ -100,10 +100,10 @@ const toolsSkills = [
+ 
+ const SkillsPage = () => {
+     const categories = [
+-        { title: "Frontend", skills: frontendSkills, speed: 10 },
+-        { title: "Backend", skills: backendSkills, speed: 14, reverse: true },
+-        { title: "AI / ML", skills: aiSkills, speed: 12 },
+-        { title: "Tools", skills: toolsSkills, speed: 15 },
++        { title: "Frontend", skills: frontendSkills, speed: 10, bg: "bg-sky-100" },
++        { title: "Backend", skills: backendSkills, speed: 14, reverse: true, bg: "bg-emerald-100" },
++        { title: "AI / ML", skills: aiSkills, speed: 12, bg: "bg-violet-100" },
++        { title: "Tools", skills: toolsSkills, speed: 15, bg: "bg-amber-100" },
+     ];
+ 
+     return (
+@@ -141,6 +141,7 @@ const SkillsPage = () => {
+                                 skills={cat.skills}
+                                 speed={cat.speed}
+                                 reverse={cat.reverse}
++                                bg={cat.bg}
+                             />
+                         </div>
+                     </div>
+diff --git a/src/utils/contactConfig.js b/src/utils/contactConfig.js
+new file mode 100644
+index 0000000..c0c1df1
+--- /dev/null
++++ b/src/utils/contactConfig.js
+@@ -0,0 +1,32 @@
++// ── Fill these in with your real details ────────────────────────────────
++// GitHub is already set from your repo owner. Update the rest:
++export const CONTACT_CONFIG = {
++    githubUrl: "https://github.com/sandula-sanchana",
++
++    // Your LinkedIn profile URL, e.g. "https://www.linkedin.com/in/sandula-sanchana"
++    linkedinUrl: "https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME",
++
++    // WhatsApp number in international format, digits only, no + or spaces
++    // e.g. "94771234567" for a Sri Lankan number starting with 0771234567
++    whatsappNumber: "94XXXXXXXXX",
++
++    // The email you want contact-form messages sent to
++    email: "your-email@gmail.com",
++
++    // Get a free key instantly at https://web3forms.com (just enter your
++    // email, no account/signup needed, key arrives on screen right away)
++    web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
++};
++
++export const whatsappLink = (message = "") => {
++    const base = `https://wa.me/${CONTACT_CONFIG.whatsappNumber}`;
++    return message ? `${base}?text=${encodeURIComponent(message)}` : base;
++};
++
++export const mailtoLink = (subject = "", body = "") => {
++    const params = new URLSearchParams();
++    if (subject) params.set("subject", subject);
++    if (body) params.set("body", body);
++    const query = params.toString();
++    return `mailto:${CONTACT_CONFIG.email}${query ? `?${query}` : ""}`;
++};

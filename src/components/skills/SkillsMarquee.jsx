@@ -1,78 +1,34 @@
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { memo, useRef } from "react";
+import { memo } from "react";
 
 // Memoized row for performance
 const SkillsRow = memo(({ skills }) => (
-    <div className="flex items-center gap-14">
+    <div className="flex items-center gap-14 shrink-0">
         {skills.map((skill, i) => (
-            <div key={i} className="flex items-center gap-3">
-                <img src={skill.icon} alt={skill.name} className="w-10 h-10" draggable={false} />
-                <span className="font-bold uppercase text-black">{skill.name}</span>
-                <span className="text-lime-400 text-2xl">✦</span>
+            <div key={i} className="flex items-center gap-3 shrink-0">
+                <img src={skill.icon} alt={skill.name} className="w-10 h-10 shrink-0" draggable={false} />
+                <span className="font-bold uppercase text-black whitespace-nowrap">{skill.name}</span>
+                <span className="text-lime-400 text-2xl shrink-0">✦</span>
             </div>
         ))}
     </div>
 ));
 
-export default function SkillsMarquee({ skills, speed = 12, reverse = false }) {
-    const track = useRef(null);
-    const cloneRef = useRef(null); // store clone for cleanup
-
-    useGSAP(() => {
-        const trackEl = track.current;
-        if (!trackEl) return;
-
-        const originalContent = trackEl.firstChild;
-        if (!originalContent) return;
-
-        // Clone the content once and store reference
-        const clone = originalContent.cloneNode(true);
-        cloneRef.current = clone;
-        trackEl.appendChild(clone);
-
-        // Wait for all images to load
-        const images = trackEl.querySelectorAll("img");
-        Promise.all(
-            [...images].map(
-                img =>
-                    img.complete
-                        ? Promise.resolve()
-                        : new Promise(res => {
-                            img.onload = res;
-                            img.onerror = res;
-                        })
-            )
-        ).then(() => {
-            const contentWidth = originalContent.offsetWidth;
-            const startX = reverse ? -contentWidth : 0;
-            const endX = reverse ? 0 : -contentWidth;
-
-            gsap.set(trackEl, { x: startX });
-            gsap.to(trackEl, {
-                x: endX,
-                repeat: -1,
-                duration: speed,
-                ease: "linear",
-            });
-        });
-
-        // Cleanup
-        return () => {
-            gsap.killTweensOf(trackEl);
-            if (cloneRef.current && trackEl.contains(cloneRef.current)) {
-                trackEl.removeChild(cloneRef.current);
-            }
-        };
-    }, []); // run only once
-
+export default function SkillsMarquee({ skills, speed = 12, reverse = false, bg = "bg-neutral-100" }) {
     return (
-        <div className="overflow-hidden w-full py-8 bg-neutral-100">
+        <div className={`overflow-hidden w-full py-8 ${bg}`}>
+            {/*
+              Two copies of the row sit side by side inside a track sized to its
+              own content (w-max). Animating the track by exactly -50% of its
+              width loops the two copies seamlessly, no JS width measurement
+              or DOM cloning needed.
+            */}
             <div
-                ref={track}
-                className="flex whitespace-nowrap gap-14 text-[2.8vw]"
-                style={{ willChange: "transform" }} // smoother animation
+                className="flex w-max gap-14 text-[2.8vw]"
+                style={{
+                    animation: `${reverse ? "marquee-reverse" : "marquee-forward"} ${speed}s linear infinite`,
+                }}
             >
+                <SkillsRow skills={skills} />
                 <SkillsRow skills={skills} />
             </div>
         </div>

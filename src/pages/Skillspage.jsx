@@ -100,10 +100,10 @@ const toolsSkills = [
 
 const SkillsPage = () => {
     const categories = [
-        { title: "Frontend", skills: frontendSkills, speed: 10 },
-        { title: "Backend", skills: backendSkills, speed: 14, reverse: true },
-        { title: "AI / ML", skills: aiSkills, speed: 12 },
-        { title: "Tools", skills: toolsSkills, speed: 15 },
+        { title: "Frontend", skills: frontendSkills, speed: 10, bg: "bg-sky-100" },
+        { title: "Backend", skills: backendSkills, speed: 14, reverse: true, bg: "bg-emerald-100" },
+        { title: "AI / ML", skills: aiSkills, speed: 12, bg: "bg-violet-100" },
+        { title: "Tools", skills: toolsSkills, speed: 15, bg: "bg-amber-100" },
     ];
 
     return (
@@ -141,6 +141,7 @@ const SkillsPage = () => {
                                 skills={cat.skills}
                                 speed={cat.speed}
                                 reverse={cat.reverse}
+                                bg={cat.bg}
                             />
                         </div>
                     </div>
