@@ -15,7 +15,7 @@ export const CONTACT_CONFIG = {
 
     // Get a free key instantly at https://web3forms.com (just enter your
     // email, no account/signup needed, key arrives on screen right away)
-    web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+    web3formsAccessKey: "c9857b6f-3c93-43ed-b247-d709f185cca0",
 };
 
 export const whatsappLink = (message = "") => {
